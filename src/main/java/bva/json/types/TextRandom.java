@@ -43,8 +43,7 @@ public class TextRandom implements RandomStrObj{
                     sentence.append(new String(chars)).append(" ");
                 }
                 sentence.append(randomWord.next());
-                String end = i==len?".":" ";
-                sentence.append(end);
+                sentence.append(i==len ? "." : " ");
             }
             return sentence.toString();
         }
