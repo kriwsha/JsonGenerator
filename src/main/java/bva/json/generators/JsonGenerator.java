@@ -1,14 +1,21 @@
 package bva.json.generators;
 
+import bva.json.context.WorkToken;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
 
 public class JsonGenerator implements Generator{
+    private WorkToken token = WorkToken.getInstance();
 
     @Override
     public void generate(int jsonCount) {
         try {
+            if(token.isWorking())
+                throw new Exception("this utility is working now");
+            else
+                token.startWorking();
             int threadCount = String.valueOf(jsonCount>9 ? (jsonCount-1) : 1).length();
             ExecutorService executor = Executors.newFixedThreadPool(threadCount);
             List<Callable<Object>> tasks = new ArrayList<>();
@@ -21,6 +28,8 @@ public class JsonGenerator implements Generator{
             executor.shutdown();
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            token.stopWorking();
         }
     }
 
