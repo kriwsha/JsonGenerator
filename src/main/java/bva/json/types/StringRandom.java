@@ -50,6 +50,6 @@ public class StringRandom implements RandomStrObj {
     }
 
     StringRandom() {
-        this(21);
+        this(10);
     }
 }

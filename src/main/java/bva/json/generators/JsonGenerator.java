@@ -1,6 +1,7 @@
 package bva.json.generators;
 
 import bva.json.context.WorkToken;
+import bva.json.exceptions.DoubleWorkException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,10 +14,10 @@ public class JsonGenerator implements Generator{
     public void generate(int jsonCount) {
         try {
             if(token.isWorking())
-                throw new Exception("this utility is working now");
+                throw new DoubleWorkException("utility is working now");
             else
                 token.startWorking();
-            int threadCount = String.valueOf(jsonCount>9 ? (jsonCount-1) : 1).length();
+            int threadCount = String.valueOf(jsonCount>99 ? (jsonCount-1) : 1).length();
             ExecutorService executor = Executors.newFixedThreadPool(threadCount);
             List<Callable<Object>> tasks = new ArrayList<>();
 
@@ -26,8 +27,9 @@ public class JsonGenerator implements Generator{
             executor.invokeAll(tasks);
 
             executor.shutdown();
+
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         } finally {
             token.stopWorking();
         }
