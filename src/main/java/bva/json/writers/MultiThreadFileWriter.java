@@ -24,8 +24,9 @@ public class MultiThreadFileWriter {
     private MultiThreadFileWriter() {
         try {
             file = new File("result.txt");
-            if (!file.exists())
-                file.createNewFile();
+            if (!file.exists()) {
+                boolean a = file.createNewFile();
+            }
         } catch (IOException e) {
             System.out.println("error: " + e.getMessage());
         }
