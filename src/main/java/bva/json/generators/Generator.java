@@ -1,5 +1,5 @@
 package bva.json.generators;
 
 public interface Generator {
-    void generate(int count);
+    void generate(String template, int count);
 }
