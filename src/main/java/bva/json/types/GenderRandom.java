@@ -4,10 +4,9 @@ import java.util.Random;
 
 public class GenderRandom implements RandomStrObj{
 
+
     @Override
     public String next() {
-        if (new Random().nextBoolean())
-            return "w";
-        return "m";
+        return new Random().nextBoolean()? "m" : "w";
     }
 }
