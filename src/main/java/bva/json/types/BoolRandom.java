@@ -1,9 +1,7 @@
 package bva.json.types;
 
-import java.util.Random;
-
-public class BoolRandom {
+public class BoolRandom extends Randomizer {
     public boolean next() {
-        return new Random().nextBoolean();
+        return random.nextBoolean();
     }
 }

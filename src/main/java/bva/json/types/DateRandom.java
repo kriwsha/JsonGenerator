@@ -3,8 +3,7 @@ package bva.json.types;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class DateRandom implements RandomStrObj{
-    protected Random random = new Random();
+public class DateRandom extends Randomizer implements RandomStrObj{
 
     @Override
     public String next() {

@@ -1,10 +1,7 @@
 package bva.json.types;
 
-import java.util.Random;
-
-public class CurrencyRandom implements RandomStrObj{
+public class CurrencyRandom extends Randomizer implements RandomStrObj{
     private String[] currency = {"$", "\u20BD", "€", "£"};
-    private Random random = new Random();
 
     @Override
     public String next() {

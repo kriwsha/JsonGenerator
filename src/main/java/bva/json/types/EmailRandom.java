@@ -3,9 +3,8 @@ package bva.json.types;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class EmailRandom implements RandomStrObj {
+public class EmailRandom extends Randomizer implements RandomStrObj {
     private String[] domains = {"com", "org", "ru", "uk", "de", "ua"};
-    private Random random = new Random();
 
     @Override
     public String next() {

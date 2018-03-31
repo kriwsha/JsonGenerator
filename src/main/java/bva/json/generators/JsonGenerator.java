@@ -17,7 +17,7 @@ public class JsonGenerator implements Generator{
                 throw new DoubleWorkException("utility is working now");
             else
                 token.startWorking();
-            int threadCount = String.valueOf(jsonCount>99 ? (jsonCount-1) : 1).length();
+            int threadCount = String.valueOf(jsonCount>99 ? jsonCount : 1).length();
             ExecutorService executor = Executors.newFixedThreadPool(threadCount);
             List<Callable<Object>> tasks = new ArrayList<>();
 
