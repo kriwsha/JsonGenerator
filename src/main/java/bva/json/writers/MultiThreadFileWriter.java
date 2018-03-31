@@ -24,10 +24,10 @@ public class MultiThreadFileWriter {
     private MultiThreadFileWriter() {
         try {
             file = new File("result.txt");
-            if (!file.exists()) {
-                boolean a = file.createNewFile();
-            }
-        } catch (IOException e) {
+            boolean exists = file.exists() || file.createNewFile();
+            if (!exists)
+                throw new Exception("file \"result.txt\" doesn't exist or wasn't created");
+        } catch (Exception e) {
             System.out.println("error: " + e.getMessage());
         }
     }

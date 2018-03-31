@@ -9,10 +9,13 @@ import java.util.concurrent.*;
 
 public class JsonGenerator implements Generator{
     private WorkToken token = WorkToken.getInstance();
+    private Template template;
 
     @Override
-    public void generate(int jsonCount) {
+    public void generate(String template, int count) {
         try {
+            this.template = new Template(template);
+
             if(token.isWorking())
                 throw new DoubleWorkException("utility is working now");
             else
@@ -37,6 +40,7 @@ public class JsonGenerator implements Generator{
 
 
     class Worker implements Runnable {
+        private HashMap<String, Object> jsonMap = new HashMap<>();
         @Override
         public void run() {
 
