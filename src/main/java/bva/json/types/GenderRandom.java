@@ -1,8 +1,7 @@
 package bva.json.types;
 
-import java.util.Random;
 
-public class GenderRandom implements RandomStrObj{
+public class GenderRandom extends Randomizer implements RandomStrObj{
     private String man;
     private String woman;
 
@@ -17,6 +16,6 @@ public class GenderRandom implements RandomStrObj{
 
     @Override
     public String next() {
-        return new Random().nextBoolean()? man : woman;
+        return random.nextBoolean()? man : woman;
     }
 }

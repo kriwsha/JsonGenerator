@@ -2,11 +2,10 @@ package bva.json.types;
 
 import java.util.Random;
 
-public class PhoneRandom {
+public class PhoneRandom extends Randomizer {
     private final char[] chars = "1234567890".toCharArray();
 
     public String next() {
-        Random random = new Random();
         StringBuilder phone = new StringBuilder();
         phone.append("+").append(chars[random.nextInt(chars.length-1)]).append("(");
         for (int i=1; i<=3; i++)

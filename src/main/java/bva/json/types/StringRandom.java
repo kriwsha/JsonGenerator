@@ -8,7 +8,7 @@ import java.util.Random;
 /**
  * not my code
  */
-public class StringRandom implements RandomStrObj {
+public class StringRandom extends Randomizer implements RandomStrObj {
 
     @Override
     public String next() {
@@ -24,8 +24,6 @@ public class StringRandom implements RandomStrObj {
     private static final String digits = "0123456789";
 
     private static final String alphanum = upper + lower + digits;
-
-    private final Random random;
 
     private final char[] symbols;
 

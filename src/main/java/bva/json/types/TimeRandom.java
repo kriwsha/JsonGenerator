@@ -3,8 +3,7 @@ package bva.json.types;
 import java.sql.Time;
 import java.util.Random;
 
-public class TimeRandom implements RandomStrObj{
-    private Random random = new Random();
+public class TimeRandom extends Randomizer implements RandomStrObj{
 
     @Override
     public String next() {

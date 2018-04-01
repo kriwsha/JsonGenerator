@@ -1,15 +1,12 @@
 package bva.json.types;
 
-import java.util.Random;
-
-public class NameRandom implements RandomStrObj{
-    private Random random = new Random();
+public class NameRandom extends Randomizer implements RandomStrObj{
 
     @Override
     public String next() {
-        return new StringBuilder()
-                .append(names[random.nextInt(names.length)])
-                .append(" ").append(surnames[random.nextInt(surnames.length)]).toString();
+        return String.format("%s %s",
+                names[random.nextInt(names.length)],
+                surnames[random.nextInt(surnames.length)]);
     }
 
     private String[] names = {"Emma", "Olivia", "Sophia", "Isabella", "Ava", "Mia", "Emily", "William", "Ethan", "Michael", "Alexander", "James", "Daniel", "Benjamin"};

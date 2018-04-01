@@ -1,10 +1,8 @@
 package bva.json.types;
 
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class RandomWord {
-    private Random random = new Random();
+public class RandomWord extends Randomizer {
     private int wordLen;
     private char[] buf;
     private final char[] chars = "abcdefghijklmnopqrstuvwxyz".toCharArray();
