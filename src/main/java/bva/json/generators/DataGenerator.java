@@ -1,22 +1,23 @@
 package bva.json.generators;
 
+import bva.json.context.JsonGenerator;
 import bva.json.context.Template;
 import bva.json.context.WorkToken;
 import bva.json.exceptions.DoubleWorkException;
+import bva.json.writers.MultiThreadFileWriter;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.*;
 
-public class JsonGenerator implements Generator{
+public class DataGenerator implements Generator{
     private WorkToken token = WorkToken.getInstance();
-    private Template template;
 
     @Override
-    public void generate(String template, int count) {
+    public void generate(String jsonTemplate, int count) {
         try {
-            this.template = new Template(template);
+            Template template = new Template(jsonTemplate);
 
             if(token.isWorking())
                 throw new DoubleWorkException("utility is working now");
@@ -26,13 +27,14 @@ public class JsonGenerator implements Generator{
             ExecutorService executor = Executors.newFixedThreadPool(threadCount);
             List<Callable<Object>> tasks = new ArrayList<>();
 
+
+
             for (int i=0; i<threadCount; i++)
-                tasks.add(Executors.callable(new Worker()));
+                tasks.add(Executors.callable(new Worker(template.getTemplate())));
 
             executor.invokeAll(tasks);
 
             executor.shutdown();
-
         } catch (Exception e) {
             System.out.println(e.getMessage());
         } finally {
@@ -40,14 +42,21 @@ public class JsonGenerator implements Generator{
         }
     }
 
-
     class Worker implements Runnable {
-        private HashMap<String, Object> jsonMap = new HashMap<>();
+        private JsonGenerator jsonGenerator;
+        private MultiThreadFileWriter fileWriter = MultiThreadFileWriter.getInstance();
+        private int count;
+
+        Worker(Map<String, Object> template) {
+            this.jsonGenerator = new JsonGenerator(template);
+        }
+
         @Override
         public void run() {
-
-
-
+            while(--count >= 0) {
+                String json = jsonGenerator.generateData();
+                fileWriter.writeToFile(json);
+            }
         }
     }
 }
