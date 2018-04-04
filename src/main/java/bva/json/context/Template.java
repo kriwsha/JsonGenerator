@@ -3,16 +3,17 @@ package bva.json.context;
 import bva.json.exceptions.WrongTemplateException;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class Template {
-    private HashMap<String, Object> template;
+    private Map<String, ?> template;
 
     public Template(String template) throws Exception {
         this.template = createTemplate(template);
     }
 
-    private HashMap<String, Object> createTemplate(String template) throws Exception {
-        HashMap<String, Object> result = new HashMap<>();
+    private Map<String, ?> createTemplate(String template) throws Exception {
+        Map<String, Object> result = new HashMap<>();
 
         if (template.charAt(0) != '{')
             throw new WrongTemplateException("template should start with '{'");
@@ -24,7 +25,7 @@ public class Template {
         return result;
     }
 
-    public HashMap<String, Object> getTemplate() {
+    public Map<String, ?> getTemplate() {
         return template;
     }
 }

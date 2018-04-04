@@ -48,7 +48,7 @@ public class DataGenerator implements Generator{
         private MultiThreadFileWriter fileWriter = MultiThreadFileWriter.getInstance();
         private int count;
 
-        Worker(Map<String, Object> template, int count) {
+        Worker(Map<String, ?> template, int count) {
             this.jsonGenerator = new JsonGenerator(template);
             this.count = count;
         }
@@ -56,7 +56,7 @@ public class DataGenerator implements Generator{
         @Override
         public void run() {
             while(--count >= 0) {
-                String json = jsonGenerator.generateData();
+                String json = jsonGenerator.generateJson();
                 fileWriter.writeToFile(json);
             }
         }
