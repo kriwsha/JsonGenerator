@@ -13,10 +13,14 @@ public class JsonGenerator {
     public synchronized String generateJson() {
         Map<String, String> result = new HashMap<>();
         template.forEach((k, v) -> result.put(k, generateData(v.toString())));
-        return result.toString();
+        return generateFinalJson(result);
     }
 
     private String generateData(String funcName) {
+        return "";
+    }
+
+    private String generateFinalJson(Map<String, String> result) {
         return "";
     }
 }
