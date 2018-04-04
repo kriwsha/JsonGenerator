@@ -27,11 +27,12 @@ public class DataGenerator implements Generator{
             ExecutorService executor = Executors.newFixedThreadPool(threadCount);
             List<Callable<Object>> tasks = new ArrayList<>();
 
-
-
-            for (int i=0; i<threadCount; i++)
-                tasks.add(Executors.callable(new Worker(template.getTemplate())));
-
+            for (int i=0; i<threadCount; i++) {
+                int countForThread = count / threadCount;
+                if (i == 0)
+                    countForThread += count % threadCount;
+                tasks.add(Executors.callable(new Worker(template.getTemplate(), countForThread)));
+            }
             executor.invokeAll(tasks);
 
             executor.shutdown();
@@ -47,8 +48,9 @@ public class DataGenerator implements Generator{
         private MultiThreadFileWriter fileWriter = MultiThreadFileWriter.getInstance();
         private int count;
 
-        Worker(Map<String, Object> template) {
+        Worker(Map<String, Object> template, int count) {
             this.jsonGenerator = new JsonGenerator(template);
+            this.count = count;
         }
 
         @Override
