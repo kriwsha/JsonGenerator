@@ -8,7 +8,6 @@ public class RandomWord extends Randomizer {
     private final char[] chars = "abcdefghijklmnopqrstuvwxyz".toCharArray();
 
     String next() {
-
         buf = new char[wordLen];
         for (int i=0; i<buf.length; i++)
             buf[i] = chars[random.nextInt(chars.length)];
