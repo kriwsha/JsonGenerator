@@ -16,7 +16,7 @@ public class JsonGenerator {
         return generateFinalJson(result);
     }
 
-    private String generateData(String funcName) {
+    private String generateData(String function) {
         return "";
     }
 
