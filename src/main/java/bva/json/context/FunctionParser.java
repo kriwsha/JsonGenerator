@@ -9,7 +9,7 @@ public class FunctionParser {
         funtion = funtion.trim();
         if (funtion.charAt(0)!='$' || funtion.charAt(funtion.length()-1)!='$')
             throw new WrongTemplateException("function name should start with '$'");
-        Class<?> clazz = FunctionEnum.valueOf(funtion.split("\\(")[0]).getType().getClassRandom();
+        Class<?> clazz = FunctionEnum.valueOf(funtion).getType().getClassRandom();
         return clazz.getMethod("next");
     }
 }
