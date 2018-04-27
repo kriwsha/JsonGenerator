@@ -17,11 +17,16 @@ public class Template {
 
         if (template.charAt(0) != '{')
             throw new WrongTemplateException("template should start with '{'");
-        for (int i=1; i<template.length(); i++) {
-            switch (template.charAt(i)) {
+
+        TemplateTokener tokener = new TemplateTokener(template);
+        while (tokener.hasNext()) {
+            char ch = tokener.next();
+            switch (ch) {
+
 
             }
         }
+
         return result;
     }
 
