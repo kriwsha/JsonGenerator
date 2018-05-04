@@ -19,22 +19,23 @@ public class DataGenerator implements Generator{
         try {
             Template template = new Template(jsonTemplate);
 
-            if(token.isWorking())
+            if(token.isWorking()) {
                 throw new DoubleWorkException("utility is working now");
-            else
+            } else {
                 token.startWorking();
+            }
             int threadCount = String.valueOf(count>99 ? count : 1).length();
             ExecutorService executor = Executors.newFixedThreadPool(threadCount);
             List<Callable<Object>> tasks = new ArrayList<>();
 
             for (int i=0; i<threadCount; i++) {
                 int countForThread = count / threadCount;
-                if (i == 0)
+                if (i == 0) {
                     countForThread += count % threadCount;
+                }
                 tasks.add(Executors.callable(new Worker(template.getTemplate(), countForThread)));
             }
             executor.invokeAll(tasks);
-
             executor.shutdown();
         } catch (Exception e) {
             System.out.println(e.getMessage());

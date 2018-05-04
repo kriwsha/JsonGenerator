@@ -1,13 +1,16 @@
 package bva.json.context;
 
+import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
 public class JsonGenerator {
     private Map<String, ?> template;
+    private FunctionParser functionParser;
 
     public JsonGenerator(Map<String, ?> template) {
         this.template = template;
+        this.functionParser = new FunctionParser();
     }
 
     public synchronized String generateJson() {
@@ -16,8 +19,15 @@ public class JsonGenerator {
         return generateFinalJson(result);
     }
 
-    private String generateData(String function) {
-        return "";
+    private String generateData(String functionName) {
+        try {
+            Method function = functionParser.getMethod(functionName);
+            Class<?> clazz = FunctionEnum.valueOf(functionName).getType().getClassRandom();
+            return function.invoke(clazz).toString();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
     }
 
     private String generateFinalJson(Map<String, String> result) {
