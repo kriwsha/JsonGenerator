@@ -1,0 +1,7 @@
+{
+  "name": "${name()}",
+  "date of birth": "${date(from: 1950, to: 1990)}",
+  "amount": "amount()",
+  "e-mail": "email()",
+  "phone": "phone()"
+}

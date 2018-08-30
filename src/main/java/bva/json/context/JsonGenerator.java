@@ -22,7 +22,7 @@ public class JsonGenerator {
     private String generateData(String functionName) {
         try {
             Method function = functionParser.getMethod(functionName);
-            Class<?> clazz = FunctionEnum.valueOf(functionName).getType().getClassRandom();
+            Class<?> clazz = FunctionType.valueOf(functionName).getType().getClassRandom();
             return function.invoke(clazz).toString();
         } catch (Exception e) {
             System.out.println(e.getMessage());

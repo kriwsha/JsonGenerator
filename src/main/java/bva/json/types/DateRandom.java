@@ -40,6 +40,10 @@ public class DateRandom extends Randomizer implements RandomStrObj{
         this.yearTo = yearTo;
     }
 
+    public DateRandom(String params) {
+        //
+    }
+
     //TODO: create constuctor DateRandom(year, monthTo)
 
 }

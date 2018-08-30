@@ -9,7 +9,7 @@ public class FunctionParser {
         function = function.trim();
         if (function.charAt(0)!='$' || function.charAt(function.length()-1)!='$')
             throw new WrongTemplateException("function name should start with '$'");
-        Class<?> clazz = FunctionEnum.valueOf(function).getType().getClassRandom();
+        Class<?> clazz = FunctionType.valueOf(function).getType().getClassRandom();
         return clazz.getMethod("next");
     }
 }
