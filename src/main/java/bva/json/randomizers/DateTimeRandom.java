@@ -1,4 +1,4 @@
-package bva.json.types;
+package bva.json.randomizers;
 
 public class DateTimeRandom extends DateRandom {
     private TimeRandom timeRandom = new TimeRandom();

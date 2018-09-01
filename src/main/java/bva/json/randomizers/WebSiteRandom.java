@@ -1,9 +1,9 @@
-package bva.json.types;
+package bva.json.randomizers;
 
 public class WebSiteRandom extends Randomizer implements RandomStrObj {
     private final String prefix = "http://www.";
     private RandomWord word = new RandomWord(5, 10);
-    private String[] domains = {"com", "org", "ru", "uk", "de", "ua"}; //TODO: объединить emailrandom и websiterandom
+    private String[] domains = {"com", "org", "ru", "uk", "de", "ua"};
 
     @Override
     public String next() {

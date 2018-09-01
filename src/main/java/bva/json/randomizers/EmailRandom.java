@@ -1,6 +1,5 @@
-package bva.json.types;
+package bva.json.randomizers;
 
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class EmailRandom extends Randomizer implements RandomStrObj {

@@ -1,7 +1,6 @@
-package bva.json.types;
+package bva.json.randomizers;
 
 import java.sql.Time;
-import java.util.Random;
 
 public class TimeRandom extends Randomizer implements RandomStrObj {
 

@@ -1,4 +1,4 @@
-package bva.json.types;
+package bva.json.randomizers;
 
 import java.util.UUID;
 

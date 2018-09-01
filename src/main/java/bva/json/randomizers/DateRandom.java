@@ -1,9 +1,8 @@
-package bva.json.types;
+package bva.json.randomizers;
 
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class DateRandom extends Randomizer implements RandomStrObj{
+public class DateRandom extends Randomizer implements RandomStrObj {
 
     @Override
     public String next() {
@@ -26,9 +25,9 @@ public class DateRandom extends Randomizer implements RandomStrObj{
         return date.toString();
     }
 
-    protected final String[] months = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
-    protected int yearFrom;
-    protected int yearTo;
+    private final String[] months = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+    private int yearFrom;
+    private int yearTo;
 
 
     public DateRandom() {

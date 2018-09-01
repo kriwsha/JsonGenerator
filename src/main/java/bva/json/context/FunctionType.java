@@ -1,6 +1,6 @@
 package bva.json.context;
 
-import bva.json.types.DateRandom;
+import bva.json.randomizers.DateRandom;
 
 import java.util.function.Function;
 import java.util.stream.Stream;
@@ -21,7 +21,7 @@ public enum FunctionType {
         return engine;
     }
 
-    public FunctionType findByName(String functionName) throws Exception {
+    public FunctionType findByName(String functionName) {
         return Stream.of(values())
                 .filter(f -> f.name.equals(functionName))
                 .findFirst().get();

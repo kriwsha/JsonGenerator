@@ -1,4 +1,4 @@
-package bva.json.types;
+package bva.json.randomizers;
 
 public class PhoneRandom extends Randomizer implements RandomStrObj {
     private final char[] chars = "1234567890".toCharArray();

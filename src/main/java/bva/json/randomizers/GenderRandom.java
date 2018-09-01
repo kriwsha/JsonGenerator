@@ -1,4 +1,4 @@
-package bva.json.types;
+package bva.json.randomizers;
 
 
 public class GenderRandom extends Randomizer implements RandomStrObj{

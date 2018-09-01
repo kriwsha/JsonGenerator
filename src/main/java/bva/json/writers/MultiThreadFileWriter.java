@@ -5,6 +5,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class MultiThreadFileWriter {
+    private static final String FILE_NAME = "result.txt";
+
     private static volatile MultiThreadFileWriter instance;
     private File file;
 
@@ -23,10 +25,11 @@ public class MultiThreadFileWriter {
 
     private MultiThreadFileWriter() {
         try {
-            file = new File("result.txt");
+            file = new File(FILE_NAME);
             boolean exists = file.exists() || file.createNewFile();
-            if (!exists)
-                throw new Exception("file \"result.txt\" doesn't exist or wasn't created");
+            if (!exists) {
+                throw new Exception(String.format("file \"%s\" doesn't exist or wasn't created", FILE_NAME));
+            }
         } catch (Exception e) {
             System.out.println("error: " + e.getMessage());
         }
