@@ -2,7 +2,7 @@ package bva.json.randomizers;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class EmailRandom extends Randomizer implements RandomStrObj {
+public class EmailRandom extends RandomValue implements Randomizer {
     private String[] domains = {"com", "org", "ru", "uk", "de", "ua"};
 
     @Override

@@ -1,7 +1,19 @@
 {
   "name": "${name()}",
-  "date of birth": "${date(from: 1950, to: 1990)}",
+  "date of birth": "${date(1950, 1990)}",
   "amount": "amount()",
   "e-mail": "email()",
-  "phone": "phone()"
+  "phone": "phone()",
+
+
+
+  "boolean_with_params": "${bool('f', 'm')}",
+  "boolean_no_params": "${bool()}",
+
+  "currency": "${currency()}",
+
+  "date_with_params": "${date(from, to)}",
+  "date_no_params": "${date()}",
+
+
 }

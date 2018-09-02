@@ -1,7 +1,7 @@
 package bva.json.randomizers;
 
 
-public class GenderRandom extends Randomizer implements RandomStrObj{
+public class GenderRandom extends RandomValue implements Randomizer {
     private String man;
     private String woman;
 

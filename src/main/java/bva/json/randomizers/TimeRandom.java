@@ -2,7 +2,7 @@ package bva.json.randomizers;
 
 import java.sql.Time;
 
-public class TimeRandom extends Randomizer implements RandomStrObj {
+public class TimeRandom extends RandomValue implements Randomizer {
 
     @Override
     public String next() {

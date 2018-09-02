@@ -2,7 +2,7 @@ package bva.json.randomizers;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class NumberRandom extends Randomizer {
+public class NumberRandom extends RandomValue {
     private int from;
     private int to;
 

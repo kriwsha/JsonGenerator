@@ -1,6 +1,6 @@
 package bva.json.randomizers;
 
-public class NameRandom extends Randomizer implements RandomStrObj{
+public class NameRandom extends RandomValue implements Randomizer {
 
     @Override
     public String next() {

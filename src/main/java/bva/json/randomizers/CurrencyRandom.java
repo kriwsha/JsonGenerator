@@ -1,6 +1,6 @@
 package bva.json.randomizers;
 
-public class CurrencyRandom extends Randomizer implements RandomStrObj{
+public class CurrencyRandom extends RandomValue implements Randomizer {
     private String[] currency = {"$", "\u20BD", "€", "£"};
 
     @Override

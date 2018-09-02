@@ -8,7 +8,7 @@ import java.util.Random;
 /**
  * not my code
  */
-public class StringRandom extends Randomizer implements RandomStrObj {
+public class StringRandom extends RandomValue implements Randomizer {
 
     @Override
     public String next() {

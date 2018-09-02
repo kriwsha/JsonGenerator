@@ -2,7 +2,13 @@ package bva.json.randomizers;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class DateRandom extends Randomizer implements RandomStrObj {
+public class DateRandom extends RandomValue implements Randomizer {
+
+    private DateRandom() {}
+
+    public static DateRandom init(String params) {
+        return new DateRandom();
+    }
 
     @Override
     public String next() {
@@ -14,7 +20,7 @@ public class DateRandom extends Randomizer implements RandomStrObj {
             case 1:
                 dayCount = 28;
                 break;
-            case 3|5|8|10:
+            case 3 | 5 | 8 | 10:
                 dayCount = 30;
                 break;
             default:
@@ -28,21 +34,5 @@ public class DateRandom extends Randomizer implements RandomStrObj {
     private final String[] months = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
     private int yearFrom;
     private int yearTo;
-
-
-    public DateRandom() {
-        this(1950, 2000);
-    }
-
-    public DateRandom(int yearFrom, int yearTo) {
-        this.yearFrom = yearFrom;
-        this.yearTo = yearTo;
-    }
-
-    public DateRandom(String params) {
-        //
-    }
-
-    //TODO: create constuctor DateRandom(year, monthTo)
 
 }
