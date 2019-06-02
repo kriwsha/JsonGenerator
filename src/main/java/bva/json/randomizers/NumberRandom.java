@@ -2,7 +2,10 @@ package bva.json.randomizers;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class NumberRandom {
+/**
+ * Random number
+ */
+class NumberRandom {
     private int from;
     private int to;
 

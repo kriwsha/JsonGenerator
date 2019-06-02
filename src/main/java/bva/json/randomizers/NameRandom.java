@@ -1,6 +1,9 @@
 package bva.json.randomizers;
 
-public class NameRandom extends RandomValue {
+/**
+ * Random human name
+ */
+class NameRandom extends RandomValue {
 
     @Override
     public String next() {

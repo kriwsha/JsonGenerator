@@ -2,7 +2,10 @@ package bva.json.randomizers;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class DateRandom extends RandomValue {
+/**
+ * Random date value
+ */
+class DateRandom extends RandomValue {
 
     private static final String[] months = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
     private int yearFrom;

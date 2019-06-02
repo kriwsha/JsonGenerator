@@ -2,7 +2,10 @@ package bva.json.randomizers;
 
 import java.util.UUID;
 
-public class GuidRandom {
+/**
+ * Random identifier
+ */
+class GuidRandom extends RandomValue {
     public String next() {
         return UUID.randomUUID().toString();
     }

@@ -1,13 +1,13 @@
 package bva.json.context;
 
-import bva.json.randomizers.DateRandom;
+import bva.json.exceptions.NoFunctionFoundException;
 import bva.json.randomizers.RandomValue;
 
 import java.util.function.Function;
 import java.util.stream.Stream;
 
 public enum FunctionType {
-    DATE("date", DateRandom::init),
+    DATE("date", null),
     BOOL("bool", null);
 
 
@@ -19,13 +19,13 @@ public enum FunctionType {
         this.engine = engine;
     }
 
-    private FunctionType findByName(String functionName) {
+    private FunctionType findByName(String functionName) throws NoFunctionFoundException {
         return Stream.of(values())
                 .filter(f -> f.name.equals(functionName))
-                .findFirst().get();
+                .findFirst().orElseThrow(NoFunctionFoundException::new);
     }
 
-    public RandomValue getRandomizer(String functionName) {
+    public RandomValue getRandomizer(String functionName) throws NoFunctionFoundException {
         return findByName(functionName)
                 .engine
                 .apply(functionName);

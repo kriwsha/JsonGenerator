@@ -1,6 +1,9 @@
 package bva.json.randomizers;
 
-public class DateTimeRandom extends DateRandom {
+/**
+ * Random time and date value
+ */
+class DateTimeRandom extends DateRandom {
     private TimeRandom timeRandom = new TimeRandom();
 
     @Override

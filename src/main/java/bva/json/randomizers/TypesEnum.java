@@ -1,5 +1,8 @@
 package bva.json.randomizers;
 
+/**
+ * ???
+ */
 public enum TypesEnum {
     STR {
         @Override

@@ -2,7 +2,10 @@ package bva.json.randomizers;
 
 import java.util.List;
 
-public class ValueChoice<T> extends RandomValue {
+/**
+ * Random choice from list of values
+ */
+class ValueChoice<T> extends RandomValue {
 
     private List<T> values;
 

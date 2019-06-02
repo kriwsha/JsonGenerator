@@ -2,7 +2,10 @@ package bva.json.randomizers;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class RandomWord extends RandomValue{
+/**
+ * Random world (random char sequence)
+ */
+class RandomWord extends RandomValue{
     private int wordLen;
     private char[] buf;
     private final char[] chars = "abcdefghijklmnopqrstuvwxyz".toCharArray();

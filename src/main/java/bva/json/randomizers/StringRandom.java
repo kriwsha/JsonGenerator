@@ -6,9 +6,9 @@ import java.util.Objects;
 import java.util.Random;
 
 /**
- * not my code
+ * Random string
  */
-public class StringRandom extends RandomValue {
+class StringRandom extends RandomValue {
 
     @Override
     public String next() {

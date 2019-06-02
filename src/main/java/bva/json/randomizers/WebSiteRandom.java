@@ -1,6 +1,9 @@
 package bva.json.randomizers;
 
-public class WebSiteRandom extends RandomValue {
+/**
+ * Random web site address
+ */
+class WebSiteRandom extends RandomValue {
     private final String prefix = "http://www.";
     private RandomWord word = new RandomWord(5, 10);
     private String[] domains = {"com", "org", "ru", "uk", "de", "ua"};

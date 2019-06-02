@@ -3,9 +3,9 @@ package bva.json.randomizers;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * Random text from got sentences
+ * Random text
  */
-public class TextRandom extends RandomValue {
+class TextRandom extends RandomValue {
     private RandomSentence sentence;
     private int sentncesCount;
 
