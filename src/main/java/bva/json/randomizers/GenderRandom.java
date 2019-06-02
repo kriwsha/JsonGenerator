@@ -1,7 +1,7 @@
 package bva.json.randomizers;
 
 
-public class GenderRandom extends RandomValue implements Randomizer {
+public class GenderRandom extends RandomValue {
     private String man;
     private String woman;
 
@@ -16,6 +16,6 @@ public class GenderRandom extends RandomValue implements Randomizer {
 
     @Override
     public String next() {
-        return random.nextBoolean()? man : woman;
+        return RANDOM.nextBoolean()? man : woman;
     }
 }

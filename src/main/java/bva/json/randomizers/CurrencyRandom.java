@@ -1,14 +1,14 @@
 package bva.json.randomizers;
 
-public class CurrencyRandom extends RandomValue implements Randomizer {
+public class CurrencyRandom extends RandomValue {
     private String[] currency = {"$", "\u20BD", "€", "£"};
 
     @Override
     public String next() {
         StringBuilder curr = new StringBuilder()
-                .append(currency[random.nextInt(currency.length)])
+                .append(currency[RANDOM.nextInt(currency.length)])
                 .append(" ");
-        char[] qua = Integer.toString(random.nextInt(1_000_000)).toCharArray();
+        char[] qua = Integer.toString(RANDOM.nextInt(1_000_000)).toCharArray();
         int c = qua.length % 3;
         for (int i=0; i<qua.length; i++) {
             if ((i == c || (i - c) % 3 == 0) && (i != 0))

@@ -5,7 +5,7 @@ import java.util.concurrent.ThreadLocalRandom;
 /**
  * Random text from got sentences
  */
-public class TextRandom implements Randomizer {
+public class TextRandom extends RandomValue {
     private RandomSentence sentence;
     private int sentncesCount;
 

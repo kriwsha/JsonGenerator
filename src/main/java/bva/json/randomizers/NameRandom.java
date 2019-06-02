@@ -1,12 +1,12 @@
 package bva.json.randomizers;
 
-public class NameRandom extends RandomValue implements Randomizer {
+public class NameRandom extends RandomValue {
 
     @Override
     public String next() {
         return String.format("%s %s",
-                names[random.nextInt(names.length)],
-                surnames[random.nextInt(surnames.length)]);
+                names[RANDOM.nextInt(names.length - 1)],
+                surnames[RANDOM.nextInt(surnames.length - 1)]);
     }
 
     private String[] names = {"Emma", "Olivia", "Sophia", "Isabella", "Ava", "Mia", "Emily", "William", "Ethan", "Michael", "Alexander", "James", "Daniel", "Benjamin"};

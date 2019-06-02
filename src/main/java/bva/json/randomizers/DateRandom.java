@@ -2,9 +2,11 @@ package bva.json.randomizers;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class DateRandom extends RandomValue implements Randomizer {
+public class DateRandom extends RandomValue {
 
-    private DateRandom() {}
+    private static final String[] months = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+    private int yearFrom;
+    private int yearTo;
 
     public static DateRandom init(String params) {
         return new DateRandom();
@@ -12,8 +14,9 @@ public class DateRandom extends RandomValue implements Randomizer {
 
     @Override
     public String next() {
+        int monthNum = RANDOM.nextInt(months.length - 1);
+
         StringBuilder date = new StringBuilder();
-        int monthNum = random.nextInt(months.length);
         date.append(months[monthNum]).append(" ");
         int dayCount;
         switch (monthNum) {
@@ -27,12 +30,16 @@ public class DateRandom extends RandomValue implements Randomizer {
                 dayCount = 31;
                 break;
         }
-        date.append(ThreadLocalRandom.current().nextInt(1, dayCount)).append(", ").append(ThreadLocalRandom.current().nextInt(yearFrom, yearTo));
+
+
+
+        date.append(
+                ThreadLocalRandom.current()
+                        .nextInt(1, dayCount))
+                .append(", ")
+                .append(ThreadLocalRandom.current()
+                        .nextInt(yearFrom, yearTo));
         return date.toString();
     }
-
-    private final String[] months = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
-    private int yearFrom;
-    private int yearTo;
 
 }

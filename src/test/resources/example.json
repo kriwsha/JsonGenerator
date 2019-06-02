@@ -13,7 +13,7 @@
   "currency": "${currency()}",
 
   "date_with_params": "${date(from, to)}",
-  "date_no_params": "${date()}",
+  "date_no_params": "${date()}"
 
 
 }

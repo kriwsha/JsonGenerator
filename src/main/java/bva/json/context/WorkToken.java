@@ -5,7 +5,7 @@ public class WorkToken {
     private boolean isWorking = false;
 
     public static WorkToken getInstance() {
-        if (instance==null)
+        if (instance == null)
             instance = new WorkToken();
         return instance;
     }

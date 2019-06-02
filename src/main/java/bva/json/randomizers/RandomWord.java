@@ -2,15 +2,15 @@ package bva.json.randomizers;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class RandomWord extends RandomValue {
+public class RandomWord extends RandomValue{
     private int wordLen;
     private char[] buf;
     private final char[] chars = "abcdefghijklmnopqrstuvwxyz".toCharArray();
 
-    String next() {
+    protected String next() {
         buf = new char[wordLen];
         for (int i=0; i<buf.length; i++)
-            buf[i] = chars[random.nextInt(chars.length)];
+            buf[i] = chars[RANDOM.nextInt(chars.length)];
         return new String(buf);
     }
 

@@ -1,19 +1,20 @@
 package bva.json.context;
 
 import bva.json.randomizers.DateRandom;
-import bva.json.randomizers.Randomizer;
+import bva.json.randomizers.RandomValue;
 
 import java.util.function.Function;
 import java.util.stream.Stream;
 
 public enum FunctionType {
-    DATE("date", DateRandom::init);
+    DATE("date", DateRandom::init),
+    BOOL("bool", null);
 
 
     private String name;
-    private Function<String, Randomizer> engine;
+    private Function<String, RandomValue> engine;
 
-    FunctionType(String name, Function<String, Randomizer> engine) {
+    FunctionType(String name, Function<String, RandomValue> engine) {
         this.name = name;
         this.engine = engine;
     }
@@ -24,7 +25,7 @@ public enum FunctionType {
                 .findFirst().get();
     }
 
-    public Randomizer getRandomizer(String functionName) {
+    public RandomValue getRandomizer(String functionName) {
         return findByName(functionName)
                 .engine
                 .apply(functionName);

@@ -5,17 +5,8 @@ public class DateTimeRandom extends DateRandom {
 
     @Override
     public String next() {
-        StringBuilder dateTime = new StringBuilder();
-        dateTime.append(super.next()).append(" ")
-                .append(timeRandom.next());
-        return dateTime.toString();
+        return super.next() + " " + timeRandom.next();
     }
 
-    public DateTimeRandom() {
-        super(2017, 2019);
-    }
 
-    public DateTimeRandom(int yearFrom, int yearTo) {
-        super(yearFrom, yearTo);
-    }
 }
