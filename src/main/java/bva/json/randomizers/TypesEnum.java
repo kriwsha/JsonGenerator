@@ -1,94 +1,82 @@
 package bva.json.randomizers;
 
 /**
- * ???
+ * Set of randomizers
  */
-public enum TypesEnum {
+enum TypesEnum {
     STR {
         @Override
-        public Class<?> getClassRandom() throws ClassNotFoundException {
-            return Class.forName("bva.json.randomizers.StringRandom");
+        public Class<? extends RandomValue> getClassRandom() throws ClassNotFoundException {
+            return (Class<? extends RandomValue>) Class.forName("bva.json.randomizers.StringRandom");
         }
     },
     TEXT {
         @Override
-        public Class<?> getClassRandom() throws ClassNotFoundException {
-            return Class.forName("bva.json.randomizers.TextRandom");
+        public Class<? extends RandomValue> getClassRandom() throws ClassNotFoundException {
+            return (Class<? extends RandomValue>) Class.forName("bva.json.randomizers.TextRandom");
         }
     },
     NUMBER {
         @Override
-        public Class<?> getClassRandom() throws ClassNotFoundException {
-            return Class.forName("bva.json.randomizers.NumberRandom");
+        public Class<? extends RandomValue> getClassRandom() throws ClassNotFoundException {
+            return (Class<? extends RandomValue>) Class.forName("bva.json.randomizers.NumberRandom");
         }
     },
     DATETIME {
         @Override
-        public Class<?> getClassRandom() throws ClassNotFoundException {
-            return Class.forName("bva.json.randomizers.DateTimeRandom");
+        public Class<? extends RandomValue> getClassRandom() throws ClassNotFoundException {
+            return (Class<? extends RandomValue>) Class.forName("bva.json.randomizers.DateTimeRandom");
         }
     },
     DATE {
         @Override
-        public Class<?> getClassRandom() throws ClassNotFoundException {
-            return Class.forName("bva.json.randomizers.DateRandom");
+        public Class<? extends RandomValue> getClassRandom() throws ClassNotFoundException {
+            return (Class<? extends RandomValue>) Class.forName("bva.json.randomizers.DateRandom");
         }
     },
     TIME {
         @Override
-        public Class<?> getClassRandom() throws ClassNotFoundException {
-            return Class.forName("bva.json.randomizers.TimeRandom");
+        public Class<? extends RandomValue> getClassRandom() throws ClassNotFoundException {
+            return (Class<? extends RandomValue>) Class.forName("bva.json.randomizers.TimeRandom");
         }
     },
     GUID {
         @Override
-        public Class<?> getClassRandom() throws ClassNotFoundException {
-            return Class.forName("bva.json.randomizers.GuidRandom");
-        }
-    },
-    BOOL {
-        @Override
-        public Class<?> getClassRandom() throws ClassNotFoundException {
-            return Class.forName("bva.json.randomizers.BoolRandom");
+        public Class<? extends RandomValue> getClassRandom() throws ClassNotFoundException {
+            return (Class<? extends RandomValue>) Class.forName("bva.json.randomizers.GuidRandom");
         }
     },
     PHONE {
         @Override
-        public Class<?> getClassRandom() throws ClassNotFoundException {
-            return Class.forName("bva.json.randomizers.PhoneRandom");
+        public Class<? extends RandomValue> getClassRandom() throws ClassNotFoundException {
+            return (Class<? extends RandomValue>) Class.forName("bva.json.randomizers.PhoneRandom");
         }
     },
     NAME {
         @Override
-        public Class<?> getClassRandom() throws ClassNotFoundException {
-            return Class.forName("bva.json.randomizers.NameRandom");
+        public Class<? extends RandomValue> getClassRandom() throws ClassNotFoundException {
+            return (Class<? extends RandomValue>) Class.forName("bva.json.randomizers.NameRandom");
         }
     },
     EMAIL {
         @Override
-        public Class<?> getClassRandom() throws ClassNotFoundException {
-            return Class.forName("bva.json.randomizers.EmailRandom");
+        public Class<? extends RandomValue> getClassRandom() throws ClassNotFoundException {
+            return (Class<? extends RandomValue>) Class.forName("bva.json.randomizers.EmailRandom");
         }
     },
     CURRENCY {
         @Override
-        public Class<?> getClassRandom() throws ClassNotFoundException {
-            return Class.forName("bva.json.randomizers.CurrencyRandom");
+        public Class<? extends RandomValue> getClassRandom() throws ClassNotFoundException {
+            return (Class<? extends RandomValue>) Class.forName("bva.json.randomizers.CurrencyRandom");
         }
     },
     WEBSITE {
         @Override
-        public Class<?> getClassRandom() throws ClassNotFoundException {
-            return Class.forName("bva.json.randomizers.WebSiteRandom");
-        }
-    },
-    GENDER {
-        @Override
-        public Class<?> getClassRandom() throws ClassNotFoundException {
-            return Class.forName("bva.json.randomizers.GenderRandom");
+        public Class<? extends RandomValue> getClassRandom() throws ClassNotFoundException {
+            return (Class<? extends RandomValue>) Class.forName("bva.json.randomizers.WebSiteRandom");
         }
     };
 
-    public abstract Class<?> getClassRandom() throws ClassNotFoundException;
+    public abstract Class<? extends RandomValue> getClassRandom() throws ClassNotFoundException;
 
 }

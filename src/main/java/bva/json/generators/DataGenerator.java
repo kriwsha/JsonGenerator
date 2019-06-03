@@ -4,6 +4,7 @@ import bva.json.context.JsonGenerator;
 import bva.json.context.Template;
 import bva.json.context.WorkToken;
 import bva.json.exceptions.DoubleWorkException;
+import bva.json.randomizers.RandomValue;
 import bva.json.writers.MultiThreadFileWriter;
 
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ public class DataGenerator implements Generator {
             } else {
                 token.startWorking();
             }
-            int threadCount = String.valueOf(count > 99 ? count : 1).length();
+            int threadCount = count < 1000 ? 1 : count % 1000;
             ExecutorService executor = Executors.newFixedThreadPool(threadCount);
             List<Callable<Object>> tasks = new ArrayList<>();
 
@@ -50,7 +51,7 @@ public class DataGenerator implements Generator {
         private MultiThreadFileWriter fileWriter = MultiThreadFileWriter.getInstance();
         private int count;
 
-        Worker(Map<String, ?> template, int count) {
+        Worker(Map<String, RandomValue> template, int count) {
             this.jsonGenerator = new JsonGenerator(template);
             this.count = count;
         }
@@ -59,7 +60,7 @@ public class DataGenerator implements Generator {
         public void run() {
             while (--count >= 0) {
                 String json = jsonGenerator.generateJson();
-                fileWriter.writeToFile(json);
+                fileWriter.write(json);
             }
         }
     }

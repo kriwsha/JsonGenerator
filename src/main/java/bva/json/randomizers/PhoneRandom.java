@@ -3,7 +3,9 @@ package bva.json.randomizers;
 /**
  * Random phone number
  */
-class PhoneRandom extends RandomValue {
+class
+
+PhoneRandom extends RandomValue {
     private final char[] chars = "1234567890".toCharArray();
 
     public String next() {

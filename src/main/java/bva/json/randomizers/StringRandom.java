@@ -10,24 +10,14 @@ import java.util.Random;
  */
 class StringRandom extends RandomValue {
 
-    @Override
-    public String next() {
-        for (int idx = 0; idx < buf.length; ++idx)
-            buf[idx] = symbols[RANDOM.nextInt(symbols.length)];
-        return new String(buf);
-    }
-
     private static final String upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-    private static final String lower = upper.toLowerCase(Locale.ROOT);
-
     private static final String digits = "0123456789";
-
+    private static final String lower = upper.toLowerCase(Locale.ROOT);
     private static final String alphanum = upper + lower + digits;
-
     private final char[] symbols;
-
     private final char[] buf;
+
+
 
     StringRandom(int length, Random random, String symbols) {
         if (length < 1) throw new IllegalArgumentException();
@@ -35,6 +25,13 @@ class StringRandom extends RandomValue {
         this.RANDOM = Objects.requireNonNull(random);
         this.symbols = symbols.toCharArray();
         this.buf = new char[length];
+    }
+
+    @Override
+    public String next() {
+        for (int idx = 0; idx < buf.length; ++idx)
+            buf[idx] = symbols[RANDOM.nextInt(symbols.length)];
+        return new String(buf);
     }
 
 

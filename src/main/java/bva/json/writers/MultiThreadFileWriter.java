@@ -3,12 +3,15 @@ package bva.json.writers;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class MultiThreadFileWriter {
-    private static final String FILE_NAME = "result.txt";
 
+    private static final String FILE_NAME = "result.txt";
+    private CopyOnWriteArrayList<String> buffer = new CopyOnWriteArrayList<>();
     private static volatile MultiThreadFileWriter instance;
     private File file;
+
 
     public static MultiThreadFileWriter getInstance() {
         MultiThreadFileWriter local = instance;
@@ -35,13 +38,27 @@ public class MultiThreadFileWriter {
         }
     }
 
-    public synchronized void writeToFile(String json) {
+    private synchronized void writeIntoFile() {
         try {
             FileWriter writer = new FileWriter(file, true);
-            writer.write(json + "\r");
-            writer.close();
-        } catch (Exception e) {
-            System.out.println("error: " + e.getMessage());
+            buffer.forEach(x -> {
+                try {
+                    writer.write(x);
+                } catch (IOException e) {
+                    System.out.println();
+                }
+            });
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            buffer.clear();
         }
+    }
+
+    public synchronized void write(String json) {
+        if (buffer.size() >= 100) {
+            writeIntoFile();
+        }
+        buffer.add(json);
     }
 }
