@@ -1,8 +1,8 @@
 package bva.json.generators;
 
-import bva.json.context.JsonGenerator;
-import bva.json.context.Template;
-import bva.json.context.WorkToken;
+import bva.json.worker.JsonGenerator;
+import bva.json.worker.Template;
+import bva.json.worker.WorkToken;
 import bva.json.exceptions.DoubleWorkException;
 import bva.json.randomizers.RandomValue;
 import bva.json.writers.MultiThreadFileWriter;
@@ -26,21 +26,28 @@ public class DataGenerator implements Generator {
                 token.startWorking();
             }
             int threadCount = count < 1000 ? 1 : count % 1000;
-            ExecutorService executor = Executors.newFixedThreadPool(threadCount);
-            List<Callable<Object>> tasks = new ArrayList<>();
 
-            for (int i = 0; i < threadCount; i++) {
-                int countForThread = count / threadCount;
-                if (i == 0) {
-                    countForThread += count % threadCount;
+            if (threadCount > 1) {
+                ExecutorService executor = Executors.newFixedThreadPool(threadCount);
+                List<Callable<Object>> tasks = new ArrayList<>();
+
+                for (int i = 0; i < threadCount; i++) {
+                    int countForThread = count / threadCount;
+                    if (i == 0) {
+                        countForThread += count % threadCount;
+                    }
+                    tasks.add(Executors.callable(
+                            new Worker(template.getTemplate(), countForThread)));
                 }
-                tasks.add(Executors.callable(
-                        new Worker(template.getTemplate(), countForThread)));
+                executor.invokeAll(tasks);
+                executor.shutdown();
+            } else {
+                Worker worker = new Worker(template.getTemplate(), count);
+                worker.run();
             }
-            executor.invokeAll(tasks);
-            executor.shutdown();
+
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         } finally {
             token.stopWorking();
         }
@@ -60,7 +67,8 @@ public class DataGenerator implements Generator {
         public void run() {
             while (--count >= 0) {
                 String json = jsonGenerator.generateJson();
-                fileWriter.write(json);
+                // fileWriter.write(json);
+                System.out.println(json);
             }
         }
     }

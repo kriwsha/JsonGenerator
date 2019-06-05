@@ -1,6 +1,6 @@
 package bva.json.randomizers;
 
-import bva.json.context.RandomInitializer;
+import bva.json.worker.RandomInitializer;
 
 import java.util.Map;
 
@@ -10,35 +10,55 @@ import java.util.Map;
 public class RandomizerFactory {
 
     public static RandomValue getRandomValueByName(RandomInitializer initializer) throws ClassNotFoundException {
-        TypesEnum typesEnum = TypesEnum.valueOf(initializer.getName());
+        TypesEnum typesEnum = TypesEnum.valueOf(initializer.getName().toUpperCase());
 
         Class<? extends RandomValue> classRandom = typesEnum.getClassRandom();
 
         // TODO: 05.06.19 Заменить этот костыль
+        // TODO: 05.06.19 Добавить создание с параметрами конструктора для всех
+        // TODO: 05.06.19 В мапу с параметрами даже при их отсутствии мы кладем пустую строку!!!
         String clazzName = classRandom.getName();
         if (clazzName.equals(CurrencyRandom.class.getName())) {
             return new CurrencyRandom();
         }
         if (clazzName.equals(DateRandom.class.getName())) {
-            return createDateRandom(initializer.getParameters());
-        }
-
-
-
-
-        return null;
-    }
-
-    private static DateRandom createDateRandom(Map<Integer, String> parameter) {
-        if (parameter.isEmpty()) {
             return new DateRandom();
-        } else {
-            int yearFrom = Integer.parseInt(parameter.get(0));
-            int yearTo = Integer.parseInt(parameter.get(1));
-
-            return new DateRandom(yearFrom, yearTo);
         }
-    }
+        if (clazzName.equals(DateTimeRandom.class.getName())) {
+            return new DateTimeRandom();
+        }
+        if (clazzName.equals(EmailRandom.class.getName())) {
+            return new EmailRandom();
+        }
+        if (clazzName.equals(GuidRandom.class.getName())) {
+            return new GuidRandom();
+        }
+        if (clazzName.equals(NameRandom.class.getName())) {
+            return new NameRandom();
+        }
+        if (clazzName.equals(NumberRandom.class.getName())) {
+            return new NumberRandom();
+        }
+        if (clazzName.equals(PhoneRandom.class.getName())) {
+            return new PhoneRandom();
+        }
+        if (clazzName.equals(RandomWord.class.getName())) {
+            return new RandomWord();
+        }
+        if (clazzName.equals(StringRandom.class.getName())) {
+            return new StringRandom();
+        }
+        if (clazzName.equals(TextRandom.class.getName())) {
+            return new TextRandom();
+        }
+        if (clazzName.equals(TimeRandom.class.getName())) {
+            return new TimeRandom();
+        }
+        if (clazzName.equals(WebSiteRandom.class.getName())) {
+            return new WebSiteRandom();
+        }
 
+        return new RandomWord();
+    }
 
 }

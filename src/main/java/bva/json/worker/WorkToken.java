@@ -1,4 +1,4 @@
-package bva.json.context;
+package bva.json.worker;
 
 public class WorkToken {
     private static WorkToken instance;

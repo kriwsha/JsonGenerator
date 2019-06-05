@@ -1,20 +1,18 @@
-package bva.json.context;
+package bva.json.worker;
 
 import bva.json.randomizers.RandomValue;
 import bva.json.randomizers.RandomizerFactory;
 import org.json.JSONObject;
-import org.json.JSONWriter;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class Template {
     private Map<String, RandomValue> template;
-    private FunctionParse parser;
+    private FunctionParse parser = new FunctionParse();
 
     public Template(String template) {
         this.template = createTemplate(template);
-        this.parser = new FunctionParse();
     }
 
     private Map<String, RandomValue> createTemplate(String template) {

@@ -5,12 +5,12 @@ import java.util.concurrent.ThreadLocalRandom;
 /**
  * Random number
  */
-class NumberRandom {
+class NumberRandom extends RandomValue{
     private int from;
     private int to;
 
-    public int next() {
-        return ThreadLocalRandom.current().nextInt(from, to);
+    public String next() {
+        return String.valueOf(ThreadLocalRandom.current().nextInt(from, to));
     }
 
     public NumberRandom() {

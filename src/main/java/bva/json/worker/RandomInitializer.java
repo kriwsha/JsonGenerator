@@ -1,4 +1,4 @@
-package bva.json.context;
+package bva.json.worker;
 
 import java.util.HashMap;
 import java.util.Map;
