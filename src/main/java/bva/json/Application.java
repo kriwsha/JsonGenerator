@@ -13,7 +13,7 @@ public class Application {
                 "  \"date of birth\": \"date()\",\n" +
                 "  \"e-mail\": \"email()\",\n" +
                 "  \"phone\": \"phone()\",\n" +
-                "  \"currency\": \"currency()\"\n" +
+                "  \"balance\": \"currency()\"\n" +
                 "}";
 
         generator.generate(template, 100);

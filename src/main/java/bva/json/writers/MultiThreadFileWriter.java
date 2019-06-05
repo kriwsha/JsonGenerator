@@ -4,12 +4,14 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class MultiThreadFileWriter {
 
     private static final String FILE_NAME = "result.txt";
     private CopyOnWriteArrayList<String> buffer = new CopyOnWriteArrayList<>();
     private static volatile MultiThreadFileWriter instance;
+    private AtomicBoolean canWriteToArray = new AtomicBoolean(true);
     private File file;
 
 
@@ -43,9 +45,9 @@ public class MultiThreadFileWriter {
             FileWriter writer = new FileWriter(file, true);
             buffer.forEach(x -> {
                 try {
-                    writer.write(x);
+                    writer.write(x + "\n");
                 } catch (IOException e) {
-                    System.out.println();
+                    e.printStackTrace();
                 }
             });
         } catch (IOException e) {
@@ -56,9 +58,16 @@ public class MultiThreadFileWriter {
     }
 
     public synchronized void write(String json) {
-        if (buffer.size() >= 100) {
-            writeIntoFile();
+        if (this.canWriteToArray.get()) {
+            if (buffer.size() >= 100) {
+                writeIntoFile();
+            }
+            buffer.add(json);
         }
-        buffer.add(json);
+    }
+
+    public synchronized void flushBuffer() {
+        this.canWriteToArray.set(false);
+        writeIntoFile();
     }
 }

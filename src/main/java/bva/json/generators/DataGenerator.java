@@ -14,6 +14,7 @@ import java.util.concurrent.*;
 
 public class DataGenerator implements Generator {
     private WorkToken token = WorkToken.getInstance();
+    private MultiThreadFileWriter fileWriter = MultiThreadFileWriter.getInstance();
 
     @Override
     public void generate(String jsonTemplate, int count) {
@@ -45,7 +46,7 @@ public class DataGenerator implements Generator {
                 Worker worker = new Worker(template.getTemplate(), count);
                 worker.run();
             }
-
+            fileWriter.flushBuffer();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -55,7 +56,6 @@ public class DataGenerator implements Generator {
 
     class Worker implements Runnable {
         private JsonGenerator jsonGenerator;
-        private MultiThreadFileWriter fileWriter = MultiThreadFileWriter.getInstance();
         private int count;
 
         Worker(Map<String, RandomValue> template, int count) {
@@ -67,7 +67,7 @@ public class DataGenerator implements Generator {
         public void run() {
             while (--count >= 0) {
                 String json = jsonGenerator.generateJson();
-                // fileWriter.write(json);
+                fileWriter.write(json);
                 System.out.println(json);
             }
         }
