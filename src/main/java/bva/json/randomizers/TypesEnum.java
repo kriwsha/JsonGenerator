@@ -67,7 +67,7 @@ enum TypesEnum {
     CURRENCY {
         @Override
         public Class<? extends RandomValue> getClassRandom() throws ClassNotFoundException {
-            return (Class<? extends RandomValue>) Class.forName("bva.json.randomizers.CurrencyRandom");
+            return (Class<? extends RandomValue>) Class.forName("bva.json.randomizers.BalanceRandom");
         }
     },
     WEBSITE {

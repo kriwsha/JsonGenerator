@@ -16,6 +16,6 @@ public class Application {
                 "  \"currency\": \"currency()\"\n" +
                 "}";
 
-        generator.generate(template, 10);
+        generator.generate(template, 100);
     }
 }

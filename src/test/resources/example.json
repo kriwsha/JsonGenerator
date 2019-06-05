@@ -3,5 +3,5 @@
   "date of birth": "date()",
   "e-mail": "email()",
   "phone": "phone()",
-  "currency": "currency()"
+  "balance": "currency()"
 }

@@ -1,10 +1,10 @@
 package bva.json.randomizers;
 
 /**
- * Currency
+ * Balance
  */
-class CurrencyRandom extends RandomValue {
-    private String[] currency = {"$", "\u20BD", "€", "£"};
+class BalanceRandom extends RandomValue {
+    private String[] currency = {"$", "RUR", "€", "£"};
 
     @Override
     public String next() {

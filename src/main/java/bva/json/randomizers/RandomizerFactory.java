@@ -2,8 +2,6 @@ package bva.json.randomizers;
 
 import bva.json.worker.RandomInitializer;
 
-import java.util.Map;
-
 /**
  * Factory for randomizer creation
  */
@@ -18,8 +16,8 @@ public class RandomizerFactory {
         // TODO: 05.06.19 Добавить создание с параметрами конструктора для всех
         // TODO: 05.06.19 В мапу с параметрами даже при их отсутствии мы кладем пустую строку!!!
         String clazzName = classRandom.getName();
-        if (clazzName.equals(CurrencyRandom.class.getName())) {
-            return new CurrencyRandom();
+        if (clazzName.equals(BalanceRandom.class.getName())) {
+            return new BalanceRandom();
         }
         if (clazzName.equals(DateRandom.class.getName())) {
             return new DateRandom();
