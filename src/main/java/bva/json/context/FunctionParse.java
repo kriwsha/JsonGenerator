@@ -3,9 +3,9 @@ package bva.json.context;
 
 import java.util.stream.Stream;
 
-public class FunctionParse {
+class FunctionParse {
 
-    public RandomInitializer parseFunction(String function) {
+    RandomInitializer parseFunction(String function) {
         String[] splited = function.split("\\(");
         String functionName = splited[0];
 
