@@ -5,14 +5,14 @@ import java.util.concurrent.ThreadLocalRandom;
 /**
  * Random world (random char sequence)
  */
-class RandomWord extends RandomValue{
+class RandomWord extends RandomValue {
     private int wordLen;
     private char[] buf;
     private final char[] chars = "abcdefghijklmnopqrstuvwxyz".toCharArray();
 
-    protected String next() {
+    public String next() {
         buf = new char[wordLen];
-        for (int i=0; i<buf.length; i++)
+        for (int i = 0; i < buf.length; i++)
             buf[i] = chars[RANDOM.nextInt(chars.length)];
         return new String(buf);
     }

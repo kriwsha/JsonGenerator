@@ -11,8 +11,13 @@ class DateRandom extends RandomValue {
     private int yearFrom;
     private int yearTo;
 
-    public static DateRandom init(String params) {
-        return new DateRandom();
+    public DateRandom() {
+        // default constructor
+    }
+
+    public DateRandom(int yearFrom, int yearTo) {
+        this.yearFrom = yearFrom;
+        this.yearTo = yearTo;
     }
 
     @Override

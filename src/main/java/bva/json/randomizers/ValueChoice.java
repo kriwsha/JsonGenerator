@@ -14,7 +14,7 @@ class ValueChoice<T> extends RandomValue {
     }
 
     @Override
-    protected String next() {
+    public String next() {
         int randomValue = RANDOM.nextInt(values.size());
         return values.get(randomValue - 1).toString();
     }

@@ -10,9 +10,11 @@ import java.util.Map;
 
 public class Template {
     private Map<String, Class<? extends RandomValue>> template;
+    private FunctionParse parser;
 
     public Template(String template) {
         this.template = createTemplate(template);
+        this.parser = new FunctionParse();
     }
 
     private Map<String, Class<? extends RandomValue>> createTemplate(String template) {
@@ -21,9 +23,17 @@ public class Template {
         Map<String, Class<? extends RandomValue>> result = new HashMap<>();
         jsonObject.keySet().forEach(key -> {
             try {
-                result.put(key, RandomizerFactory.getRandomValueByName(key));
+                String functionValue = jsonObject.getString(key);
+                RandomInitializer initializer = parser.parseFunction(functionValue);
+
+                Class<? extends RandomValue> randomizerClass = RandomizerFactory.getRandomValueByName(initializer);
+
+
+
+
+                result.put(key, randomizerClass);
             } catch (ClassNotFoundException e) {
-                System.out.println(e);
+                e.printStackTrace();
             }
         });
         return result;
@@ -32,4 +42,6 @@ public class Template {
     public Map<String, Class<? extends RandomValue>> getTemplate() {
         return template;
     }
+
+
 }
